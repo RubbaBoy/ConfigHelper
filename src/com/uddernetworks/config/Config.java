@@ -14,6 +14,7 @@ import org.bukkit.util.Vector;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -32,7 +33,7 @@ public class Config extends FileConfiguration {
     private File fullPath;
     private ConfigOptions options;
     private static ConfigOptions defaultOptions = new ConfigOptions();
-    private FileConfiguration fileConfiguration;
+    private YamlConfiguration fileConfiguration;
 
     /**
      * Creates a Config object with all default values
@@ -111,6 +112,9 @@ public class Config extends FileConfiguration {
      */
     public void saveConfig() {
         try {
+            PrintWriter writer = new PrintWriter(fullPath);
+            writer.print("");
+            writer.close();
             this.fileConfiguration.save(fullPath);
         } catch (IOException e) {
             e.printStackTrace();
@@ -200,7 +204,7 @@ public class Config extends FileConfiguration {
     /**
      * Initializes  and sets up files. Should be ran only once per Config object and after a Config object has been created and options have been set.
      */
-    public void initialize() {
+    public void initialize(Object instance) {
         try {
             if (!path.exists()) {
                 path.mkdirs();
@@ -211,7 +215,7 @@ public class Config extends FileConfiguration {
                 fullPath.createNewFile();
 
                 if (options.getSetDefaults() != null) {
-                    URL url = Config.class.getClassLoader().getResource(options.getSetDefaults());
+                    URL url = instance.getClass().getClassLoader().getResource(options.getSetDefaults());
                     if (url == null) return;
                     URLConnection connection = url.openConnection();
                     connection.setUseCaches(false);
