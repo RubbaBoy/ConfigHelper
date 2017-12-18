@@ -177,7 +177,10 @@ public class Config extends FileConfiguration {
         }
     }
 
-    private void updateAllFields() {
+    /**
+     * Updates all of the Annotated fields from the current config
+     */
+    public void updateAllFields() {
         if (updatingFields.containsKey(name)) {
             HashMap<String, List<FieldEntry>> temp = updatingFields.get(name);
 
@@ -202,7 +205,8 @@ public class Config extends FileConfiguration {
     }
 
     /**
-     * Initializes  and sets up files. Should be ran only once per Config object and after a Config object has been created and options have been set.
+     * Initializes and sets up files. Should be ran only once per Config object and after a Config object has been created and options have been set.
+     * @param instance The instance of the class to be initialized
      */
     public void initialize(Object instance) {
         try {
