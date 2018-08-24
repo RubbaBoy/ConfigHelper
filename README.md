@@ -9,6 +9,36 @@ Provides an easy to use API to make custom Spigot configs, with other features.
 + Auto reload
 + Annotation-bound config getters
 
+## Obtaining
+You can use CommandHelper with Gradle or Maven. An example of the Gradle declaration:
+
+```groovy
+repositories {
+    maven { url "http://repo.rubbaboy.me/Minecraft/" }
+}
+
+dependencies {
+    compile(group: 'com.uddernetworks.config', name: 'ConfigHelper', version: '1.1-SNAPSHOT')
+}
+```
+
+An example of Maven usage:
+```xml
+<repositories>	
+        <repository>	
+            <id>rubbaboy-plugins</id>	
+            <url>http://repo.rubbaboy.me/Minecraft/</url>	
+        </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+        <groupId>com.uddernetworks.config</groupId>
+        <artifactId>ConfigHelper</artifactId>
+        <version>1.1-SNAPSHOT</version>
+    </dependency>
+</dependencies>
+```
 
 ## How To Use
 For reference of any methods, please check the [JavaDoc](https://rubbaboy.me/confighelp/).
