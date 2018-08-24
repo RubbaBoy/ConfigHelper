@@ -25,7 +25,7 @@ artifactory {
     contextUrl = "${artifactory_contextUrl}"
     publish {
         repository {
-            repoKey = 'Gradle'
+            repoKey = 'Minecraft'
             username = "${artifactory_user}"
             password = "${artifactory_password}"
             maven = true
